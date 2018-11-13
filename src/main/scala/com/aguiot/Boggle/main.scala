@@ -1,4 +1,4 @@
-package Boggle
+package com.aguiot.Boggle
 
 object main {
 
@@ -24,7 +24,7 @@ object main {
   }
 
   def search(board: Seq[Seq[Char]], dict: Seq[String], trav: Seq[Point], point: Point, str: String): Seq[String] = {
-    val newStr = str + board(point.x)(point.y)
+    val newStr = str + board(point.y)(point.x)
     val result: Seq[String] = if (dict.contains(newStr)) Seq(newStr) else Seq()
 
     (result ++ point.moves(trav).flatten.map(search(board, dict, trav :+ point, _, newStr)).flatten).distinct

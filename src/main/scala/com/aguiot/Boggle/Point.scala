@@ -1,4 +1,4 @@
-package Boggle
+package com.aguiot.Boggle
 
 case class Point(x: Int, y: Int) {
   def moves(trav: Seq[Point]): Seq[Option[Point]] = {

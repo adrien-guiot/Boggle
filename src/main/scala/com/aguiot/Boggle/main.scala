@@ -10,15 +10,20 @@ object main {
       Seq('A', 'S', 'U', 'R'),
       Seq('T', 'Q', 'R', 'E'))
 
+    board.foreach(println)
+
 
     val dict = Seq("CAT", "TOUR", "CATOBU")
+    println(dict)
 
     println(solve(board, dict))
   }
 
   def solve(board: Seq[Seq[Char]], dict: Seq[String]): Seq[String] = {
 
-    val myArray = for (x <- 0 until 4; y <- 0 until 4) yield search(board, dict, Seq(), Point(x, y), "")
+    val myArray = for (x <- 0 until 4;
+                       y <- 0 until 4)
+      yield search(board, dict, Seq(), Point(x, y), "")
 
     myArray.flatten
   }
@@ -27,8 +32,9 @@ object main {
     val newStr = str + board(point.y)(point.x)
     val result: Seq[String] = if (dict.contains(newStr)) Seq(newStr) else Seq()
 
-    (result ++ point.moves(trav).flatten.map(search(board, dict, trav :+ point, _, newStr)).flatten).distinct
-
+    (result ++ point.moves(trav)
+      .flatten
+      .map(search(board, dict, trav :+ point, _, newStr))
+      .flatten).distinct
   }
-
 }

@@ -1,4 +1,4 @@
-name := "boggle-Sbt"
+name := "Boggle-sbt"
 
 version := "1.0"
 
